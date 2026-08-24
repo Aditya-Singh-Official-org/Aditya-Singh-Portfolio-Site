@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aditya Singh | DevOps Engineer</title>
+    <!-- Google Fonts for a clean, modern aesthetic -->
+    <link href="https://googleapis.com" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url("https://live.staticflickr.com/1630/25757046741_87fe1d8562_h.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            height: 100vh;
+            color: #ffffff;
+            display: flex;
+            padding: 40px;
+            gap: 30px;
+            overflow: hidden;
+        }
+
+        /* SIDEBAR CONTAINER FOR LEFT SIDE PANELS */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 360px;
+            height: 100%;
+            z-index: 10;
+        }
+
+        /* GENERAL GLASSMORPHISM BASE */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        /* TOP-LEFT PERSONAL TITLE */
+        .info h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff, #a5b4fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .info p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info p::before {
+            content: "⚡";
+            font-size: 0.8rem;
+        }
+
+        /* BOTTOM-LEFT SKILLS CARD */
+        .info-2 {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-2 h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* ROTATING IMAGE */
+        .rotating-image {
+            width: 100%;
+            max-width: 220px;
+            height: auto;
+            object-fit: contain;
+            transform-origin: center;
+            animation: rotateImage 20s linear infinite; /* Smooth slower rotation */
+        }
+
+        @keyframes rotateImage {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* CENTER-RIGHT PROFILE DISPLAY */
+        .main-info {
+            flex-grow: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 10;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+
+        .profile-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            object-fit: cover;
+        }
+
+        .profile-header-text h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .profile-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .detail-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .detail-item label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.5;
+            margin-bottom: 5px;
+        }
+
+        .detail-item span {
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        /* SOCIAL & ACTION BUTTONS */
+        .profile-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+        }
+
+        .profile-footer h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* REUSABLE STYLISH BUTTON */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: #ffffff;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* PRIMARY DOWNLOAD RESUME BUTTON */
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            border: none;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #4f46e5, #4338ca);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- LEFT SIDEBAR HOUSING BOTH INFORMATION MODULES -->
+<div class="sidebar">
+    <!-- PERSONAL INFORMATION -->
+    <div class="glass-panel info">
+        <h1>Aditya Singh</h1>
+        <p>Python Specialist</p>
+        <p>Full-stack Web Developer</p>
+        <p>DevOps Engineer</p>
+    </div>
+
+    <!-- CODING LANGUAGES -->
+    <div class="glass-panel info-2">
+        <h2>Coding Languages</h2>
+        <img src="skills.png" class="rotating-image" alt="Coding Languages">
+    </div>
+</div>
+
+<!-- MAIN RIGHT CENTER DISPLAY CARD -->
+<div class="glass-panel main-info">
+    <div>
+        <div class="profile-header">
+            <img src="me.png" alt="Aditya Singh" class="profile-avatar">
+            <div class="profile-header-text">
+                <h1>Aditya Singh</h1>
+                <p style="opacity: 0.6;">DevOps & Software Solutions</p>
+            </div>
+        </div>
+
+        <div class="profile-details">
+            <div class="detail-item">
+                <label>Age</label>
+                <span>14 Years Old</span>
+            </div>
+            <div class="detail-item">
+                <label>Location</label>
+                <span>India</span>
+            </div>
+            <div class="detail-item">
+                <label>Education</label>
+                <span>Certified by FreeCodeCamp</span>
+            </div>
+            <div class="detail-item">
+                <label>Experience</label>
+                <span>Independent Freelancer</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-footer">
+        <h3>Connect & Resources</h3>
+        <div class="button-group">
+            <!-- Actionable download element with descriptive context -->
+            <a class="btn btn-primary" href="AdityaSingh_InternshalaResume.pdf" download="AdityaSingh_InternshalaResume.pdf">
+                💾 Download Internshala Resume
+            </a>
+            <a class="btn" href="https://www.x.com/@AdityaCoderman" target="_blank">
+                🐦 X (@AdityaCoderman)
+            </a>
+            <a class="btn" href="https://www.youtube.com/@UnrealPhobiaGamesOfficial" target="_blank">
+                📺 Code With Conquer
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
